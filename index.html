@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Dylan Stone — brand strategy portfolio. Economics student at the University of Michigan.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Dylan Stone Strategy Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a black field split by a red rule; oversized condensed type carries the identity, an interactive econ chart in the hero states the thesis (the gap between the model and the real choice is brand). Single dark theme by design. */
+:root{
+  --ink:#0a0a0a;
+  --panel:#131312;
+  --line:#2a2826;
+  --paper:#f3f1ee;
+  --mute:#9a9690;
+  --red:#e8473b;
+  --red-ink:#ffffff;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+a{color:inherit}
+::selection{background:var(--red);color:var(--red-ink)}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.display{font-family:var(--display);font-variation-settings:"wdth" 72;font-weight:800;text-transform:uppercase;line-height:.84;letter-spacing:-.01em;text-wrap:balance}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--ink) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.mark{font-family:var(--display);font-variation-settings:"wdth" 62;font-weight:900;font-size:22px;letter-spacing:.02em;text-decoration:none;display:flex;align-items:center;gap:8px}
+.mark i{display:inline-block;width:10px;height:10px;background:var(--red);border-radius:50%}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;color:var(--mute);transition:color .2s}
+.nav ul a:hover{color:var(--paper)}
+@media (max-width:640px){.nav ul{gap:14px}.nav ul li.hide-sm{display:none}}
+
+/* hero */
+.hero{padding-block:56px 40px}
+.hero-grid{display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px 56px;align-items:end}
+.hero-side{padding-bottom:14px;border-left:3px solid var(--red);padding-left:24px;min-width:0}
+.hero-side .thesis{margin-top:0}
+.hero h1{font-size:clamp(84px,18vw,280px);margin:0}
+.hero h1 span{display:block}
+.hero h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--paper)}
+.thesis{max-width:34ch;margin:28px 0 0;font-size:clamp(18px,2vw,22px);line-height:1.4}
+.thesis b{color:var(--red);font-weight:600}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:22px;color:var(--mute)}
+.chart{background:var(--panel);border:1px solid var(--line);padding:18px 18px 14px;position:relative;touch-action:pan-y;min-width:0}
+.chart svg{display:block;width:100%;height:auto;cursor:crosshair}
+.chart .legend{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--mute);margin-bottom:8px}
+.chart .legend span{display:inline-flex;align-items:center;gap:8px}
+.chart .legend .k{width:22px;height:0;border-top:2px dashed var(--mute)}
+.chart .legend .k.r{border-top:3px solid var(--red)}
+.chart .hint{color:var(--mute);margin-top:6px}
+.draw{stroke-dasharray:900;stroke-dashoffset:0;animation:draw 1.4s cubic-bezier(.6,0,.2,1) both}
+@keyframes draw{from{stroke-dashoffset:900}to{stroke-dashoffset:0}}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-side{padding-bottom:0}}
+
+/* ribbon */
+.ribbon{background:var(--red);color:var(--red-ink);overflow:hidden;border-block:1px solid var(--red);transform:rotate(-1.2deg);margin:28px -20px 0}
+.ribbon .track{display:flex;width:max-content;animation:slide 32s linear infinite}
+.ribbon p{margin:0;padding:12px 0;white-space:nowrap;font-family:var(--display);font-variation-settings:"wdth" 100;font-weight:700;font-size:20px;letter-spacing:.04em;text-transform:uppercase}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* sections */
+section.block{padding-block:96px 24px}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:40px}
+.head h2{font-size:clamp(56px,10vw,136px);margin:0}
+.head .mono{color:var(--mute)}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1.3fr;gap:48px}
+.about .lead{font-family:var(--display);font-variation-settings:"wdth" 88;font-weight:600;font-size:clamp(26px,3.4vw,40px);line-height:1.12;margin:0;text-wrap:balance}
+.about .lead em{font-style:normal;color:var(--red)}
+.about .copy{display:flex;flex-direction:column;gap:16px;max-width:62ch;color:#d9d6d1}
+.about .copy p{margin:0}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px}
+.facts>div{background:var(--ink);padding:22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.facts h3{margin:0;color:var(--red)}
+.facts ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.facts .edu b{display:block;font-weight:600}
+.facts .edu span{color:var(--mute);font-size:14px}
+@media (max-width:860px){.about{grid-template-columns:1fr}.facts{grid-template-columns:1fr}}
+
+/* experience */
+.xp{display:flex;flex-direction:column}
+.xp-row{display:grid;grid-template-columns:150px 1fr 1.4fr;gap:32px;padding-block:32px;border-bottom:1px solid var(--line);position:relative}
+.xp-row .yr{font-family:var(--display);font-variation-settings:"wdth" 62;font-weight:900;font-size:76px;line-height:.8;color:var(--paper);transition:color .25s}
+.xp-row .yr sup{font-size:.4em;vertical-align:top;color:var(--red)}
+.xp-row:hover .yr{color:var(--red)}
+.xp-row h3{font-family:var(--display);font-variation-settings:"wdth" 90;font-weight:700;font-size:24px;text-transform:uppercase;margin:0 0 6px;line-height:1.1}
+.xp-row .role{color:var(--mute)}
+.xp-row .lesson{display:inline-block;margin-top:16px;padding:6px 10px;border:1px solid var(--red);color:var(--red)}
+.xp-row .body{display:flex;flex-direction:column;gap:12px;min-width:0;color:#d9d6d1;max-width:60ch}
+.xp-row .body p{margin:0}
+.now{display:flex;gap:10px;align-items:baseline;padding:12px 14px;background:var(--panel);border-left:3px solid var(--red)}
+.now .mono{color:var(--red);white-space:nowrap}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;animation:pulse 1.6s ease-in-out infinite;flex:none;transform:translateY(-1px)}
+@keyframes pulse{50%{opacity:.25}}
+@media (max-width:860px){.xp-row{grid-template-columns:1fr;gap:12px}.xp-row .yr{font-size:60px}}
+
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 28px}
+.card{display:flex;flex-direction:column;gap:14px;text-decoration:none;min-width:0}
+.frame{position:relative;aspect-ratio:4/3;max-width:100%;overflow:hidden;background:var(--panel);border:1px solid var(--line)}
+.frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;color:var(--mute);background:repeating-linear-gradient(135deg,transparent 0 14px,rgba(255,255,255,.035) 14px 15px)}
+.ph .mono{border:1px dashed var(--mute);padding:8px 12px}
+.card .wipe{position:absolute;inset:0;background:var(--red);mix-blend-mode:multiply;transform:scaleY(0);transform-origin:bottom;transition:transform .45s cubic-bezier(.7,0,.2,1)}
+.card:hover .wipe,.card:focus-visible .wipe{transform:scaleY(1)}
+.card:hover .frame img{transform:scale(1.05)}
+.card .meta{display:flex;align-items:center;gap:16px}
+.card .n{font-family:var(--display);font-variation-settings:"wdth" 62;font-weight:900;font-size:44px;line-height:.8}
+.card .t{flex:1;min-width:0}
+.card .t b{display:block;font-family:var(--display);font-variation-settings:"wdth" 92;font-weight:700;font-size:20px;text-transform:uppercase;line-height:1.1}
+.card .t span{color:var(--mute);font-size:14px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:var(--red-ink);padding:10px 16px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.btn .arr{transition:transform .25s}
+.btn:hover .arr,.card:hover .btn .arr{transform:translateX(4px)}
+.btn.ghost{background:transparent;color:var(--paper);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--paper)}
+.btn[aria-disabled="true"]{background:transparent;color:var(--mute);border:1px dashed var(--mute);cursor:default}
+@media (max-width:760px){.grid{grid-template-columns:1fr}}
+
+/* written */
+.written{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;background:var(--panel);border:1px solid var(--line);padding:40px}
+.written h3{font-family:var(--display);font-variation-settings:"wdth" 70;font-weight:800;font-size:clamp(44px,7vw,92px);line-height:.86;text-transform:uppercase;margin:10px 0 18px}
+.written h3 span{color:var(--red)}
+.written p{margin:0 0 22px;color:#d9d6d1;max-width:52ch}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);aspect-ratio:1;max-width:100%}
+.swot div{background:var(--ink);display:flex;flex-direction:column;justify-content:space-between;padding:16px;transition:background .25s,color .25s}
+.swot div:hover{background:var(--red);color:var(--red-ink)}
+.swot b{font-family:var(--display);font-variation-settings:"wdth" 62;font-weight:900;font-size:64px;line-height:.8}
+@media (max-width:760px){.written{grid-template-columns:1fr;padding:24px}}
+
+/* contact */
+.contact h2{font-size:clamp(64px,13vw,180px);margin:0 0 40px}
+.contact h2 span{color:var(--red)}
+.links{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.links>div{background:var(--ink);padding:22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.links .mono{color:var(--mute)}
+.links .v{font-family:var(--display);font-variation-settings:"wdth" 95;font-weight:600;font-size:20px;overflow-wrap:anywhere;user-select:all}
+.links .row{display:flex;gap:8px;flex-wrap:wrap}
+@media (max-width:760px){.links{grid-template-columns:1fr}}
+footer{padding-block:48px;color:var(--mute);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* to-add markers */
+.todo{display:inline;border:1px dashed var(--red);color:#ffb3ab;padding:1px 6px;font-family:var(--mono);font-size:.82em}
+
+/* project view */
+#project{display:none}
+body.in-project #home{display:none}
+body.in-project #project{display:block;animation:rise .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes rise{from{opacity:.2;transform:translateY(24px)}to{opacity:1;transform:none}}
+.p-top{padding-block:40px 24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.p-head h1{font-size:clamp(72px,15vw,210px);margin:12px 0 0}
+.p-head .kick{color:var(--red)}
+.p-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-block:40px}
+.p-strip div{background:var(--ink);padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.p-strip .mono{color:var(--mute)}
+.p-body{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;padding-block:56px}
+.p-body h2{font-family:var(--display);font-variation-settings:"wdth" 80;font-weight:800;text-transform:uppercase;font-size:36px;line-height:1;margin:0}
+.p-body .txt{display:flex;flex-direction:column;gap:16px;max-width:62ch;color:#d9d6d1}
+.p-body .txt p{margin:0}
+.swatches{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.swatch{display:flex;flex-direction:column;gap:8px;width:120px}
+.swatch i{display:block;height:84px;border:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;align-items:start}
+.gallery figure{margin:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+.gallery figcaption{color:var(--mute)}
+.gallery .frame img{object-fit:cover}
+.p-hero{transition:transform .3s ease-out;will-change:transform}
+.p-hero img{object-fit:contain}
+.masonry{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.masonry .lb{position:relative;display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;min-width:0;text-align:left}
+.masonry .frame{aspect-ratio:4/5}
+.masonry .frame img{object-fit:cover}
+.masonry .wipe{opacity:.35}
+.masonry .lb:hover .wipe,.masonry .lb:focus-visible .wipe{transform:scaleY(1)}
+.masonry .lb:hover .frame img{transform:scale(1.04)}
+.masonry .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.7));pointer-events:none}
+@media (max-width:560px){.masonry{grid-template-columns:1fr}}
+#lightbox{position:fixed;inset:0;z-index:100;background:rgba(5,5,5,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:max(20px,env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) max(20px,env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px))}
+#lightbox[hidden]{display:none}
+#lightbox img{max-width:100%;max-height:78vh;object-fit:contain;animation:rise .35s ease}
+#lightbox p{color:var(--mute);margin:0;text-align:center}
+#lightbox .btn{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px))}
+.pmap{margin:0 0 24px;background:var(--ink);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:8px}
+.pmap svg{display:block;width:100%;height:auto;max-width:860px;margin-inline:auto}
+.pmap figcaption{color:var(--mute);text-align:center}
+.pulse-g circle:first-child{transform-origin:530px 70px;animation:ring 2.2s ease-out infinite}
+@keyframes ring{0%{transform:scale(.6);opacity:1}100%{transform:scale(1.8);opacity:0}}
+.p-note{color:var(--mute);margin:-8px 0 24px;line-height:1.7;text-transform:none;letter-spacing:.02em}
+.p-note a{color:var(--paper);text-underline-offset:3px}
+.txt b{color:var(--paper);font-weight:600}
+.swot-art{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;background:var(--line)}
+.swot-art div{background:var(--panel);display:flex;flex-direction:column;justify-content:space-between;padding:16px;min-width:0}
+.swot-art div:first-child{background:var(--red);color:var(--red-ink)}
+.swot-art b{font-family:var(--display);font-variation-settings:"wdth" 62;font-weight:900;font-size:clamp(40px,7vw,72px);line-height:.8}
+.swot-art span{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.swot-art.big b{font-size:clamp(56px,10vw,120px)}
+.swot-art.big span{font-size:clamp(12px,1.4vw,16px)}
+.demand{margin:0 0 24px;border:1px solid var(--line);padding:24px;display:flex;flex-direction:column;gap:18px}
+.dm-row{display:grid;grid-template-columns:minmax(0,220px) 1fr auto;gap:16px;align-items:center}
+.dm-lab{color:var(--mute);text-transform:none;letter-spacing:.02em}
+.dm-track{height:22px;border-bottom:1px solid var(--line)}
+.dm-track i{display:block;height:100%;border-radius:0 4px 4px 0}
+.dm-val{font-family:var(--display);font-variation-settings:"wdth" 80;font-weight:800;font-size:28px;font-variant-numeric:tabular-nums;min-width:4ch;text-align:right}
+.demand figcaption{color:var(--mute);text-transform:none;letter-spacing:.02em}
+.txt .btn{align-self:flex-start}
+@media (max-width:560px){.dm-row{grid-template-columns:1fr auto}.dm-lab{grid-column:1/-1}}
+#reader{position:fixed;inset:0;z-index:110;background:rgba(5,5,5,.96);overflow-y:auto;padding-bottom:max(24px,env(safe-area-inset-bottom,0px))}
+#reader[hidden]{display:none}
+.rd-bar{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:calc(12px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 12px max(16px,env(safe-area-inset-left,0px));background:var(--ink);border-bottom:1px solid var(--line)}
+.rd-bar .mono{color:var(--paper)}
+.rd-pages{display:flex;flex-direction:column;align-items:center;gap:16px;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px))}
+.rd-pages img{width:100%;max-width:850px;height:auto;display:block;background:#fff;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+.album{display:flex;flex-direction:column;gap:14px;outline:none}
+.stage{position:relative;background:var(--panel);border:1px solid var(--line);overflow:hidden;cursor:e-resize;max-width:100%}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transform:scale(1.03);transition:opacity .45s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.stage img.on{opacity:1;transform:none}
+.ctrl{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ctrl .cap{color:var(--mute);text-align:center;min-width:0}
+.ctrl .cap b{color:var(--paper);font-weight:500}
+.thumbs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.thumbs button{flex:none;width:96px;padding:0;border:2px solid transparent;background:none;cursor:pointer;opacity:.55;transition:opacity .2s,border-color .2s}
+.thumbs button img{display:block;width:100%}
+.thumbs button.on,.thumbs button:hover{opacity:1}
+.thumbs button.on{border-color:var(--red)}
+.p-body+.album,.p-body+.gallery,.p-body+.masonry{margin-bottom:24px}
+.p-next{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:72px;padding-block:40px;text-decoration:none}
+.p-next .display{font-size:clamp(48px,9vw,120px);transition:color .25s}
+.p-next:hover .display{color:var(--red)}
+@media (max-width:760px){.p-strip{grid-template-columns:1fr 1fr}.p-body{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="mark" href="#top"><i></i>DS</a>
+    <ul class="mono">
+      <li><a href="#work">Projects</a></li>
+      <li class="hide-sm"><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="home">
+  <header class="hero" id="top-anchor">
+    <div class="wrap hero-grid">
+      <h1 class="display"><span>Dylan</span><span class="stroke">Stone</span></h1>
+      <div class="hero-side">
+        <p class="thesis">Economics taught me how people <i>should</i> choose. Brand is why they don't. <b>I work in that gap.</b></p>
+        <div class="hero-meta mono"><span>Brand strategy</span><span>Michigan '27</span><span>Based in New York + Ann Arbor</span></div>
+      </div>
+    </div>
+    <div class="ribbon" aria-hidden="true">
+      <div class="track">
+        <p>Brand strategy ✦ Market research ✦ Competitive analysis ✦ Brand audits ✦ Strategic recommendations ✦ Content strategy ✦ Economics ✦&nbsp;</p>
+        <p>Brand strategy ✦ Market research ✦ Competitive analysis ✦ Brand audits ✦ Strategic recommendations ✦ Content strategy ✦ Economics ✦&nbsp;</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="head"><h2 class="display">About</h2><span class="mono">Economics → Brand</span></div>
+      <div class="about">
+        <p class="lead">People pay more for a name they trust. They stay loyal to products that aren't objectively better. <em>That's the part of economics I couldn't stop thinking about.</em></p>
+        <div class="copy">
+          <p>I'm an economics student at the University of Michigan, graduating in May 2027, and I'm building a career in brand strategy. I came to branding through an interest in the psychology behind decision-making. Economics gave me models for how people should choose, but real decisions rarely follow them. The gap between the model and the real choice is brand, and it's what I want to work on.</p>
+          <p>My internships pulled me steadily closer to that question: from the entertainment touring industry, to brand consistency across 150+ car dealerships, to an employer brand in one of the most regulated industries there is.</p>
+          <p>When I'm not working, I'm making things: designs, videos, a running apparel brand of my own, and photos from wherever I've traveled.</p>
+        </div>
+      </div>
+      <div class="facts">
+        <div class="edu">
+          <h3 class="mono">Education</h3>
+          <div><b>University of Michigan</b><span>B.A. Economics, Minor in Entrepreneurship · May 2027</span></div>
+          <div><b>Saint Louis University, Madrid</b><span>Study abroad · Spring 2026</span></div>
+        </div>
+        <div>
+          <h3 class="mono">Skills</h3>
+          <ul>
+            <li>Brand audits &amp; competitive benchmarking</li>
+            <li>Content strategy</li>
+            <li>Video production, script to final cut</li>
+            <li>Adobe Photoshop &amp; Illustrator</li>
+            <li>Excel, Google Sheets, RStudio</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="mono">Interests</h3>
+          <ul>
+            <li>Running</li>
+            <li>Hiking &amp; travel</li>
+            <li>Live music</li>
+            <li>Fashion</li>
+            <li>Cooking</li>
+            <li>Basketball</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <div class="head"><h2 class="display">Experience</h2><span class="mono">Accuracy → Consistency → Strategy</span></div>
+      <div class="xp">
+        <article class="xp-row">
+          <div class="yr">26<sup>'</sup></div>
+          <div>
+            <h3>Bristol Myers Squibb</h3>
+            <div class="role mono">Marketing Intern, Employer Brand · Madison, NJ</div>
+            <span class="lesson mono">Constraints sharpen a brand</span>
+          </div>
+          <div class="body">
+            <p>I worked on the BMS employer brand: how the company presents itself to the people it wants to hire. In a highly regulated industry, I looked for creative room outside the usual playbook. I benchmarked the careers site against 15+ pharma and tech competitors, built a severity-scored gap analysis and candidate journey map, wrote an 11-page brand audit, and presented recommendations to senior leaders. Several were adopted before I left.</p>
+            <p>I also led an intern video program end to end, scripting and filming 15+ videos that let interns tell their own stories.</p>
+          </div>
+        </article>
+        <article class="xp-row">
+          <div class="yr">25<sup>'</sup></div>
+          <div>
+            <h3>Shift Digital</h3>
+            <div class="role mono">Marketing Intern · Birmingham, MI</div>
+            <span class="lesson mono">A brand lives in every storefront</span>
+          </div>
+          <div class="body">
+            <p>I designed 30+ promotional banners for Subaru and Volkswagen dealers, making local offers stand out while staying true to each national brand. I also audited 50+ dealer websites, fixing off-brand elements across a network of 150+ dealerships, and turned performance data into recommendations for customer acquisition and retention.</p>
+          </div>
+        </article>
+        <article class="xp-row">
+          <div class="yr">23<sup>'</sup></div>
+          <div>
+            <h3>Tour Connection</h3>
+            <div class="role mono">Summer Office Intern · Rochester, MI</div>
+            <span class="lesson mono">A brand is the experience it delivers</span>
+          </div>
+          <div class="body">
+            <p>Tour Connection is a travel resource for the entertainment touring industry. Working with the travel agents and hotels behind touring artists taught me that in a relationship business, a brand is only as strong as the experience it delivers every time.</p>
+            <div class="now"><span class="pulse" aria-hidden="true"></span><span class="mono">Now · Fall 2026</span><span>Leading a brand audit and refresh for Tour Connection.</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="head"><h2 class="display">Projects</h2><span class="mono">4 projects · select one</span></div>
+      <div class="grid" id="cards"></div>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact">
+    <div class="wrap">
+      <h2 class="display">Get in<br><span>touch.</span></h2>
+      <div class="links">
+        <div>
+          <span class="mono">Email</span>
+          <span class="v" id="email">dstone1430@gmail.com</span>
+          <div class="row"><button class="btn" id="copyEmail" type="button">Copy email</button></div>
+        </div>
+        <div>
+          <span class="mono">LinkedIn</span>
+          <span class="v">linkedin.com/in/dylanstone-umich</span>
+          <div class="row"><a class="btn ghost" href="https://www.linkedin.com/in/dylanstone-umich/" target="_blank" rel="noopener">Open profile <span class="arr">→</span></a></div>
+        </div>
+        <div>
+          <span class="mono">Resume</span>
+          <span class="v">Brand strategy, 2026</span>
+          <div class="row"><button class="btn" type="button" data-reader="resume">View resume <span class="arr">→</span></button></div>
+        </div>
+      </div>
+    </div>
+    <footer class="wrap mono"><span>© 2026 Dylan Stone</span><span>Made in Ann Arbor</span></footer>
+  </section>
+</main>
+
+<main id="project" aria-live="polite"></main>
+<div id="reader" hidden role="dialog" aria-modal="true" aria-labelledby="readerTitle">
+  <div class="rd-bar"><span class="mono" id="readerTitle"></span><button class="btn" type="button" id="readerClose">Close ✕</button></div>
+  <div class="rd-pages" id="readerPages"></div>
+</div>
+<div id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo" onclick="if(event.target===this)closeLightbox()">
+  <button class="btn" type="button" onclick="closeLightbox()">Close ✕</button>
+  <img src="" alt="">
+  <p class="mono"></p>
+</div>
+
+<script>
+/* ---------- Content: swap in images and copy here ---------- */
+const TODO = t => `<span class="todo">${t}</span>`;
+const ALBUM = ["Index · 2026","Estes Park, Colorado","Madrid, Spain","Valencia, Spain","Madeira, Portugal","Ghent, Belgium","Lisbon, Portugal","Amalfi, Italy","Amsterdam, Netherlands","Kyoto, Japan"]
+  .map((label,i)=>({src:`img/album-${String(i+1).padStart(2,"0")}.jpg`,label,ratio:1500/970}));
+const SWOT_COVER = `<div class="swot-art"><div><b>S</b><span>Taste as a brand</span></div><div><b>W</b><span>Thin margins</span></div><div><b>O</b><span>Fan ecosystem</span></div><div><b>T</b><span>Brand dilution</span></div></div>`;
+const SWOT_HERO = `<div class="swot-art big"><div><b>S</b><span>The logo is a promise of taste</span></div><div><b>W</b><span>Small box office share, rising budgets</span></div><div><b>O</b><span>Membership, merch, and music</span></div><div><b>T</b><span>Rivals and brand dilution</span></div></div>`;
+const PROJECTS = [
+  {
+    id:"a24", n:"01", title:"A24", sub:"SWOT analysis · Brand strategy",
+    kicker:"Strategy case study", role:"Researcher and author", year:"2026", tools:"Market research, SWOT",
+    cover:{html:SWOT_COVER},
+    hero:{html:SWOT_HERO, ratio:16/9},
+    overviewTitle:"The question",
+    overview:[
+      "A24 built a brand people follow like a band. Now, with bigger budgets and bigger stars, people close to it, including the cousin who first showed me its films, worry it's losing its indie roots.",
+      "<b>Can a brand built on taste grow without losing what made people care?</b>"
+    ],
+    sections:[
+      {h:"What I did", p:[
+        "I researched A24's business, marketing, and competitive landscape using company information, industry analysis, and trade coverage. I structured the findings into a SWOT, backed each point with evidence, and paired the quadrants to find strategic moves."
+      ]},
+      {h:"What I found", p:[
+        "<b>The name is the asset.</b> Most people can't name the studio behind the last film they watched, but A24's logo works as a promise of taste. From 2019 to 2024, A24 released 0.75% of U.S. films but captured 1.25% of audience demand.",
+        "<b>But the scale is small and the stakes are rising.</b> A24 has never taken more than 2.45% of the U.S. box office, while budgets climb to a reported $50 million for <i>Civil War</i> and about $70 million for <i>Marty Supreme</i>.",
+        "<b>And the space is getting crowded.</b> Neon's <i>Anora</i> beat A24's <i>The Brutalist</i> for Best Picture in 2025, and AI-generated <i>Civil War</i> posters drew criticism from fans as off-brand."
+       ],
+       media:{type:"demand"},
+       note:'Sources: <a href="https://www.parrotanalytics.com/press/a24s-dollar35b-valuation-pushes-the-indie-studio-toward-blockbusters/" target="_blank" rel="noopener">Parrot Analytics</a> · <a href="https://nogood.io/blog/a24-marketing-strategy" target="_blank" rel="noopener">NoGood</a> · <a href="https://www.thepopverse.com/movies-neon-netflix-a24-competition/" target="_blank" rel="noopener">Popverse</a> · <a href="https://petapixel.com/2024/04/23/a24-criticized-for-using-ai-generated-movie-posters-for-civil-war" target="_blank" rel="noopener">PetaPixel</a>'},
+      {h:"What I recommended", p:[
+        "A two-track strategy: keep investing in larger, more commercial films while protecting a dedicated slate for smaller, experimental ones, for example under their own label with its own release schedule and marketing.",
+        "Beyond the films, grow AAA24, limited merch drops, and music partnerships to deepen relationships with fans and earn revenue between releases. Growth should reinforce A24's reputation for films audiences wouldn't expect from anyone else, not replace it.",
+        '<button class="btn" type="button" data-reader="a24">Read the full analysis <span class="arr">→</span></button>'
+      ]}
+    ]
+  },
+  {
+    id:"solace", n:"02", title:"SOLACE", sub:"Brand concept · Running apparel",
+    kicker:"Brand concept", role:"Founder, brand designer", year:"2026", tools:"Hand drawing",
+    cover:{src:"img/solace-cover.jpg",label:"SOLACE ridge graphic",pos:"center"},
+    hero:{src:"img/solace-poster.jpg",label:"SOLACE poster: a runner drawn in gestural black linework with the red wordmark",ratio:1024/1536,bg:"#efe6d4"},
+    overview:[
+      "SOLACE is a running apparel brand I built from my own hand-drawn artwork. The goal was simple to say and hard to do: make gear that performs like real running equipment and looks like real streetwear.",
+      "It hasn't launched yet. It's where I practice the whole job, from finding the gap in the market to the mark on the shirt."
+    ],
+    sections:[
+      {h:"The idea", p:[
+        "Running has become a culture, not just a workout. People wear their running clubs, race tees, and shorts well beyond the run. But when I looked for a brand that took both sides seriously, I kept finding one or the other. Most brands either build for the run and treat style as an afterthought, or build for the look and treat performance as a costume.",
+        "SOLACE is my attempt to close that gap: technical fabrics that hold up on a long run, paired with graphics and silhouettes that come from streetwear rather than the lab."
+      ]},
+      {h:"The gap", p:[
+        "<b>Satisfy</b> proved runners will treat running gear as fashion. But much of the line leans on fashion over function, including cotton tees that aren't built for long efforts, and the prices put it out of reach for most runners. Runners have pushed back on prices like £130 for a cotton t-shirt and £200 for a pair of shorts.",
+        "<b>Bandit</b> sits on the other side. It's built around performance and community, with designs that are intentionally minimal, grounded in black and meant to look discreet. That works for the run, but it leaves little room for the bold, creative graphics that make streetwear feel personal.",
+        "SOLACE aims for the open corner: real performance materials, real streetwear design, at a price runners can justify."
+       ],
+       media:{type:"map"},
+       note:'Sources: <a href="https://wearetrailmix.substack.com/p/are-you-satisfy-ed" target="_blank" rel="noopener">Trail Mix, "Are you Satisfy-ed?"</a> · <a href="https://run.outsideonline.com/news/bandit-running-nyc-brand" target="_blank" rel="noopener">Outside Run, "Bandit Wants to Be Your New Favorite Running Brand"</a>'},
+      {h:"Identity", p:["A hand-lettered wordmark and fast, gestural linework, so the brand feels drawn by hand rather than engineered. That handmade quality is the streetwear half of the idea; the fabrics are the performance half. The core palette is cream, black, and red, with a blue alternate for the wordmark."],
+       swatches:[["Cream","#efe6d4"],["Black","#0a0a0a"],["Red","#d8382c"],["Blue alt","#1f5a9a"]],
+       media:{type:"grid",items:[{src:"img/solace-logo-red.jpg",label:"Wordmark, red",ratio:1},{src:"img/solace-logo-blue.jpg",label:"Wordmark, blue alternate",ratio:1},{src:"img/solace-ridge.jpg",label:"Ridge graphic",ratio:909/948}]}}
+    ]
+  },
+  {
+    id:"graphic-design", n:"03", title:"Graphic Design", sub:"ARTDES 176 · University of Michigan",
+    kicker:"Coursework", role:"Designer", year:"2026", tools:"Adobe Illustrator",
+    cover:{src:"img/gd-gull-collage.jpg",label:"Gull collage from the Madeira page of the travel album",pos:"center"},
+    hero:ALBUM[0],
+    overview:["Work from my graphic design course at Michigan. Two pieces: a travel album of the places I've been, and my own business card."],
+    sections:[
+      {h:"Travel album", p:["Ten postcard-style pages, one for each place, from Estes Park to Kyoto. Each pairs one of my photos with a bold color field, a collage treatment, and a handwritten list of the spots I'd send a friend to."], media:{type:"album",items:ALBUM}},
+      {h:"Business card", p:["A personal business card built around a DS monogram, with a repeating S pattern on the back."], media:{type:"grid",items:[{src:"img/card-1.jpg",label:"Business card, front",ratio:5/3},{src:"img/card-2.jpg",label:"Business card, back",ratio:5/3}]}}
+    ]
+  },
+  {
+    id:"photography", n:"04", title:"Photography", sub:"Travel photography",
+    kicker:"Personal work", role:"Photographer", year:"Ongoing",
+    cover:{src:"img/photo-madrid-corner.jpg",label:"Corner building, Madrid",pos:"center 40%"},
+    hero:{src:"img/photo-madeira-gull.jpg",label:"A gull taking off above the cliffs of Madeira, Portugal",ratio:1},
+    overview:["Photos from the places I've traveled. Deciding what goes in the frame and what stays out is the same instinct I bring to brand work."],
+    sections:[
+      {h:"Places", p:["Guatemala · Madeira · Madrid · Ghent · Amsterdam · Amalfi. Select a photo to see it uncropped."], media:{type:"masonry",items:[
+        {src:"img/photo-guatemala-field.jpg",label:"Morning fog, Guatemala",pos:"center 70%"},
+        {src:"img/photo-panajachel-market.jpg",label:"Market street, Panajachel",pos:"center 60%"},
+        {src:"img/photo-amsterdam-cineac.jpg",label:"Cineac sign, Amsterdam",pos:"center 45%"},
+        {src:"img/photo-madeira-road.jpg",label:"Road above the clouds, Madeira",pos:"78% center"},
+        {src:"img/photo-madrid-palace.jpg",label:"Royal Palace at sunset, Madrid",pos:"center 62%"},
+        {src:"img/photo-ghent-vooruit.jpg",label:"Vooruit, Ghent",pos:"center 45%"},
+        {src:"img/photo-madrid-corner.jpg",label:"Corner building, Madrid",pos:"center"},
+        {src:"img/photo-amalfi-pier.jpg",label:"On the pier, Amalfi",pos:"center 70%"},
+        {src:"img/photo-panajachel-street.jpg",label:"Wires and signs, Panajachel",pos:"center 40%"}
+      ]}}
+    ]
+  }
+];
+const DOCS = {
+  a24:{title:"A24 SWOT Analysis", pages:["img/docs/a24-1.jpg","img/docs/a24-2.jpg","img/docs/a24-3.jpg"]},
+  resume:{title:"Dylan Stone · Resume", pages:["img/docs/resume-1.jpg"]}
+};
+
+/* ---------- Helpers ---------- */
+const $ = s => document.querySelector(s);
+function frame(m={}, cls="", extra=""){
+  const st = [m.ratio?`aspect-ratio:${m.ratio}`:"", m.bg?`background:${m.bg}`:""].filter(Boolean).join(";");
+  const img = m.html ? m.html : m.src ? `<img src="${m.src}" alt="${m.label||""}" loading="lazy" style="object-position:${m.pos||"center"}">` : `<div class="ph"><span class="mono">${m.label||"Image"}</span></div>`;
+  return `<div class="frame ${cls}" style="${st}" ${extra}>${img}<span class="wipe" aria-hidden="true"></span></div>`;
+}
+
+$("#cards").innerHTML = PROJECTS.map(p=>`
+  <a class="card" href="#${p.id}">
+    ${frame(p.cover)}
+    <div class="meta">
+      <span class="n">${p.n}</span>
+      <span class="t"><b>${p.title}</b><span>${p.sub}</span></span>
+      <span class="btn">View work <span class="arr">→</span></span>
+    </div>
+  </a>`).join("");
+
+function setLink(el,url,label){ if(url){el.href=url;el.target="_blank";el.rel="noopener";el.removeAttribute("aria-disabled");el.removeAttribute("role");el.innerHTML=label+' <span class="arr">→</span>';} }
+
+$("#copyEmail").addEventListener("click",async e=>{
+  const b=e.currentTarget, t=$("#email").textContent;
+  try{await navigator.clipboard.writeText(t);b.textContent="Copied";}
+  catch{const r=document.createRange();r.selectNodeContents($("#email"));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selected, press copy";}
+  setTimeout(()=>b.textContent="Copy email",2000);
+});
+
+/* ---------- Project view + hash routing ---------- */
+function media(m){
+  if(!m) return "";
+  if(m.type==="album") return `
+    <div class="album" data-album>
+      <div class="stage" style="aspect-ratio:${m.items[0].ratio}">${m.items.map((it,i)=>`<img src="${it.src}" alt="${it.label}" class="${i?"":"on"}" loading="${i<2?"eager":"lazy"}">`).join("")}</div>
+      <div class="ctrl"><button class="btn ghost" type="button" data-prev aria-label="Previous page">←</button><span class="mono cap"><b data-num>01</b> / ${String(m.items.length).padStart(2,"0")} · <span data-lab>${m.items[0].label}</span></span><button class="btn" type="button" data-next aria-label="Next page">→</button></div>
+      <div class="thumbs">${m.items.map((it,i)=>`<button type="button" data-go="${i}" class="${i?"":"on"}" aria-label="${it.label}"><img src="${it.src}" alt="" loading="lazy"></button>`).join("")}</div>
+    </div>`;
+  if(m.type==="map") return `
+    <figure class="pmap">
+      <svg viewBox="0 0 640 440" role="img" aria-label="Positioning map: Satisfy is high on streetwear design but lower on performance; Bandit is high on performance but lower on streetwear design; SOLACE targets high on both.">
+        <rect x="70" y="20" width="540" height="360" fill="var(--panel)" stroke="var(--line)"/>
+        <rect x="340" y="20" width="270" height="180" fill="var(--red)" fill-opacity=".09"/>
+        <line x1="340" y1="20" x2="340" y2="380" stroke="var(--line)" stroke-dasharray="4 6"/>
+        <line x1="70" y1="200" x2="610" y2="200" stroke="var(--line)" stroke-dasharray="4 6"/>
+        <text x="340" y="412" fill="var(--mute)" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" text-anchor="middle">BUILT FOR PERFORMANCE →</text>
+        <text x="30" y="200" fill="var(--mute)" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" text-anchor="middle" transform="rotate(-90 30 200)">STREETWEAR + CREATIVE DESIGN →</text>
+        <g><circle cx="150" cy="85" r="9" fill="var(--paper)"/><text x="167" y="83" fill="var(--paper)" font-family="Archivo, Arial Narrow, sans-serif" font-weight="700" font-size="20">SATISFY</text><text x="167" y="103" fill="var(--mute)" font-family="IBM Plex Mono, monospace" font-size="11">fashion-first · premium price</text></g>
+        <g><circle cx="520" cy="305" r="9" fill="var(--paper)"/><text x="503" y="303" fill="var(--paper)" font-family="Archivo, Arial Narrow, sans-serif" font-weight="700" font-size="20" text-anchor="end">BANDIT</text><text x="503" y="323" fill="var(--mute)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="end">performance-first · minimal design</text></g>
+        <g class="pulse-g"><circle cx="530" cy="70" r="20" fill="var(--red)" fill-opacity=".25"/><circle cx="530" cy="70" r="11" fill="var(--red)"/><text x="508" y="76" fill="var(--paper)" font-family="Archivo, Arial Narrow, sans-serif" font-weight="800" font-size="24" text-anchor="end">SOLACE</text></g>
+      </svg>
+      <figcaption class="mono">My read of the market, not measured data</figcaption>
+    </figure>`;
+  if(m.type==="demand") return `
+    <figure class="demand" aria-label="A24 share of U.S. films released versus share of audience demand, 2019 to 2024">
+      <div class="dm-row"><span class="dm-lab mono">Share of U.S. films released</span><div class="dm-track"><i style="width:${0.75/1.5*100}%;background:var(--mute)"></i></div><span class="dm-val">0.75%</span></div>
+      <div class="dm-row"><span class="dm-lab mono">Share of audience demand</span><div class="dm-track"><i style="width:${1.25/1.5*100}%;background:var(--red)"></i></div><span class="dm-val">1.25%</span></div>
+      <figcaption class="mono">A24, 2019–2024 average · Source: Parrot Analytics</figcaption>
+    </figure>`;
+  if(m.type==="masonry") return `<div class="masonry">${m.items.map(it=>`<button type="button" class="lb" data-lb="${it.src}" data-cap="${it.label}" aria-label="View full size: ${it.label}">${frame(it)}<span class="cap mono">${it.label}</span></button>`).join("")}</div>`;
+  return `<div class="gallery">${m.items.map(it=>`<figure>${frame(it)}<figcaption class="mono">${it.label}</figcaption></figure>`).join("")}</div>`;
+}
+function renderProject(p){
+  const i = PROJECTS.indexOf(p), next = PROJECTS[(i+1)%PROJECTS.length];
+  const h = p.hero||{}, r = h.ratio||16/9;
+  const heroStyle = `width:min(100%, calc(78vh * ${r}));margin-inline:auto`;
+  $("#project").innerHTML = `
+    <div class="wrap">
+      <div class="p-top"><a class="btn ghost" href="#work"><span>←</span> All projects</a><span class="mono" style="color:var(--mute)">Project ${p.n} / 0${PROJECTS.length}</span></div>
+      <div class="p-head"><span class="mono kick">${p.kicker}</span><h1 class="display">${p.title}</h1></div>
+      <div class="p-strip"${p.tools?"":' style="grid-template-columns:repeat(3,1fr)"'}>
+        <div><span class="mono">Type</span>${p.kicker}</div>
+        <div><span class="mono">Role</span>${p.role}</div>
+        <div><span class="mono">Year</span>${p.year}</div>
+        ${p.tools?`<div><span class="mono">Tools</span>${p.tools}</div>`:""}
+      </div>
+      <div class="tilt" style="${heroStyle}">${frame(h,"p-hero")}</div>
+      <div class="p-body"><h2>${p.overviewTitle||"Overview"}</h2><div class="txt">${p.overview.map(t=>`<p>${t}</p>`).join("")}</div></div>
+      ${p.sections.map(s=>`
+        <div class="p-body"><h2>${s.h}</h2><div class="txt">${s.p.map(t=>`<p>${t}</p>`).join("")}${s.swatches?`<div class="swatches">${s.swatches.map(([n,c])=>`<div class="swatch"><i style="background:${c}"></i><span class="mono">${n}</span></div>`).join("")}</div>`:""}</div></div>
+        ${media(s.media)}${s.note?`<p class="p-note mono">${s.note}</p>`:""}`).join("")}
+      <a class="p-next" href="#${next.id}"><span class="mono" style="color:var(--mute)">Next project</span><span class="display">${next.title} →</span></a>
+    </div>`;
+  initAlbums(); initTilt(); initLightbox();
+}
+function initAlbums(){
+  document.querySelectorAll("[data-album]").forEach(a=>{
+    const imgs=[...a.querySelectorAll(".stage img")], th=[...a.querySelectorAll("[data-go]")];
+    let k=0;
+    const go=n=>{ k=(n+imgs.length)%imgs.length; imgs.forEach((im,j)=>im.classList.toggle("on",j===k)); th.forEach((t,j)=>t.classList.toggle("on",j===k));
+      a.querySelector("[data-num]").textContent=String(k+1).padStart(2,"0"); a.querySelector("[data-lab]").textContent=imgs[k].alt;
+      th[k].scrollIntoView({block:"nearest",inline:"center",behavior:"smooth"}); };
+    a.querySelector("[data-prev]").onclick=()=>go(k-1);
+    a.querySelector("[data-next]").onclick=()=>go(k+1);
+    th.forEach((t,j)=>t.onclick=()=>go(j));
+    a.querySelector(".stage").onclick=()=>go(k+1);
+    a.tabIndex=0; a.onkeydown=e=>{ if(e.key==="ArrowRight")go(k+1); if(e.key==="ArrowLeft")go(k-1); };
+  });
+}
+function initLightbox(){
+  const box=$("#lightbox"), img=box.querySelector("img"), cap=box.querySelector("p");
+  document.querySelectorAll("[data-lb]").forEach(b=>b.onclick=()=>{img.src=b.dataset.lb;img.alt=b.dataset.cap;cap.textContent=b.dataset.cap;box.hidden=false;box.querySelector("button").focus();});
+}
+function closeLightbox(){ const box=$("#lightbox"); if(!box.hidden){box.hidden=true;} }
+function openReader(id){ const d=DOCS[id]; if(!d) return; const r=$("#reader");
+  $("#readerTitle").textContent=d.title;
+  $("#readerPages").innerHTML=d.pages.map((src,i)=>`<img src="${src}" alt="${d.title}, page ${i+1} of ${d.pages.length}">`).join("");
+  r.hidden=false; r.scrollTop=0; document.body.style.overflow="hidden"; $("#readerClose").focus(); }
+function closeReader(){ const r=$("#reader"); if(!r.hidden){ r.hidden=true; document.body.style.overflow=""; } }
+document.addEventListener("click",e=>{ const b=e.target.closest("[data-reader]"); if(b) openReader(b.dataset.reader); });
+$("#readerClose").addEventListener("click",closeReader);
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ closeLightbox(); closeReader(); } });
+function initTilt(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches || matchMedia("(hover: none)").matches) return;
+  document.querySelectorAll(".tilt").forEach(t=>{
+    const f=t.firstElementChild;
+    t.onpointermove=e=>{const r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;f.style.transform=`perspective(1200px) rotateY(${x*6}deg) rotateX(${-y*6}deg)`;};
+    t.onpointerleave=()=>f.style.transform="";
+  });
+}
+const SECTIONS = ["work","experience","contact","about"];
+function route(){
+  const h = location.hash.slice(1);
+  const p = PROJECTS.find(x=>x.id===h);
+  if(p){ renderProject(p); document.body.classList.add("in-project"); window.scrollTo({top:0}); document.title = p.title + " · Dylan Stone"; return; }
+  const wasProject = document.body.classList.contains("in-project");
+  document.body.classList.remove("in-project"); document.title = "Dylan Stone Strategy Portfolio";
+  if(SECTIONS.includes(h)){ const el=document.getElementById(h); requestAnimationFrame(()=>el.scrollIntoView({behavior: wasProject?"auto":"smooth"})); }
+  else if(h==="top"){ window.scrollTo({top:0,behavior:"smooth"}); }
+}
+addEventListener("hashchange",route); route();
+
+</script>
+
+</body>
+</html>
